@@ -5,13 +5,13 @@ namespace Core\Routing;
 class Route
 {
     public string $method;
-    public string $uri;
+    public string $path;
     public array $callback;
 
-    public function __construct(string $method, string $uri, array $callback)
+    public function __construct(string $method, string $path, array $callback)
     {
         $this->method = $method;
-        $this->uri = $uri;
+        $this->path = $path;
         $this->callback = $callback;
     }
 }
