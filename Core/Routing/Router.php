@@ -20,7 +20,7 @@ class Router
 
     private function addRoute(string $method, string $uri, array $callback)
     {
-        $this->routes[$method . "@" . $uri] = $callback;
+        $this->routes[$method . "@" . $uri] = new Route($method, $uri, $callback);
     }
 
     public function dispatch() : void
