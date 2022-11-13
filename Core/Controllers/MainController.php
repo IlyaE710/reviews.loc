@@ -3,7 +3,6 @@
 namespace Core\Controllers;
 
 use Core\Controllers\Base\Controller;
-use Core\Database\Connection;
 use Core\Models\FeedbackModel;
 use Core\Routing\Request;
 
@@ -11,10 +10,7 @@ class MainController extends Controller
 {
     public function index()
     {
-        $connection = (new Connection())->getInstance();
-        $sth = $connection->prepare("SELECT * from review");
-        $sth->execute();
-        $data = $sth->fetchAll();
+        $data = FeedbackModel::getAll();
         $this->render("main", ["data" => $data]);
     }
 
@@ -28,7 +24,6 @@ class MainController extends Controller
             $model->text = $_POST['text'];;
             $model->save();
         }
-
         $this->redirect();
     }
 }
