@@ -4,18 +4,25 @@ namespace Core\Database;
 
 use PDO;
 
-//TODO Добавить файл конфигурации
 class Connection
 {
-    private string $dsn = "mysql:host=localhost;dbname=reviewDB;charset=utf8";
-    private array $option = [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_STRINGIFY_FETCHES => false,
-        PDO::ATTR_EMULATE_PREPARES => false,
-    ];
+    private string $dsn;
+    private string $username;
+    private string $password;
+    private array $option;
+
+    public function __construct()
+    {
+        $config = include_once DB;
+        $this->dsn = $config["dsn"];
+        $this->username = $config["username"];
+        $this->password = $config["password"];
+
+        $this->option = $config["option"];;
+    }
 
     public function get(): PDO
     {
-        return new PDO($this->dsn, 'root', 'root', $this->option);
+        return new PDO($this->dsn, $this->username, $this->password, $this->option);
     }
 }

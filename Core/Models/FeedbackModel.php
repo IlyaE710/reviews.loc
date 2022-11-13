@@ -13,7 +13,6 @@ class FeedbackModel extends Model
 
     public function save()
     {
-
         $sth = $this->connection->prepare("INSERT INTO review (author, text) values (:name, :text)");
         $sth->execute([
             'name' => $this->author,
