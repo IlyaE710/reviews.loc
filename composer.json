@@ -1,0 +1,19 @@
+{
+  "name": "vendor_name/reviews.loc",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "MRENDI",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Core\\" : "Core/"
+    }
+  }
+}
