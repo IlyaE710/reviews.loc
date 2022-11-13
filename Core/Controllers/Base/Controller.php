@@ -18,4 +18,9 @@ class Controller
     {
         $this->view->render($template, $params);
     }
+
+    public function redirect()
+    {
+        header('Location: http://reviews.loc/');
+    }
 }

@@ -32,4 +32,9 @@ class Request
         }
         return $params;
     }
+
+    public function isPost(): bool
+    {
+        return $this->method === "POST";
+    }
 }

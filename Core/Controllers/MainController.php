@@ -4,6 +4,8 @@ namespace Core\Controllers;
 
 use Core\Controllers\Base\Controller;
 use Core\Database\Connection;
+use Core\Models\FeedbackModel;
+use Core\Routing\Request;
 
 class MainController extends Controller
 {
@@ -16,16 +18,17 @@ class MainController extends Controller
         $this->render("main", ["data" => $data]);
     }
 
-    public function action()
+    public function addFeedback()
     {
-        $connection = (new Connection())->getInstance();
-        $sth = $connection->prepare("INSERT INTO review (author, text) values (:name, :text)");
-        $name = $_POST['name'];
-        $text = $_POST['text'];
-        $sth->execute([
-            'name' => $name,
-            'text' => $text,
-        ]);
-        header('Location: http://reviews.loc/');
+        $model = new FeedbackModel();
+        $request = new Request();
+        if ($request->isPost() && $model->validate())
+        {
+            $model->author = $_POST['name'];;
+            $model->text = $_POST['text'];;
+            $model->save();
+        }
+
+        $this->redirect();
     }
 }

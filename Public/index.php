@@ -9,7 +9,7 @@ const TEMPLATES = __DIR__ . "/../Templates";
 
 $router = new Router();
 $router->get('/', [MainController::class]);
-$router->post('/action', [MainController::class, "action"]);
+$router->post('/addFeedback', [MainController::class, "addFeedback"]);
 try {
     $router->dispatch(new Request());
 } catch (ErrorException $e) {
