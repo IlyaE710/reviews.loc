@@ -1,6 +1,49 @@
-* {
-    background-color: #000;
+.contact__wrapper {
+    width: 750px;
+    margin: 0 auto;
 }
-h1 {
+
+.red {
     color: red;
+}
+
+input, button {
+    width: 360px;
+    height: 40px;
+    font-size: 20px;
+    margin-bottom: 30px;
+    padding-left: 10px;
+}
+
+input:first-of-type {
+    margin-right: 28px;
+}
+
+.form__input {
+    display: flex;
+}
+
+textarea {
+    width: 100%;
+    height: 163px;
+}
+
+input, textarea {
+    border: 1px solid #999999;
+    margin-top: 5px;
+    padding-left: 10px;
+}
+
+textarea {
+    padding-top: 10px;
+}
+
+button {
+    width: 165px;
+    height: 40px;
+}
+
+.feedback__wrapper {
+    width: 750px;
+    margin: 0 auto;
 }

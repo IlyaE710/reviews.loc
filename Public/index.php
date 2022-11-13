@@ -9,8 +9,7 @@ const TEMPLATES = __DIR__ . "/../Templates";
 
 $router = new Router();
 $router->get('/', [MainController::class]);
-$router->get('sf/sd', ["controller1", "action"]);
-$router->post('sf/sd', ["controller1", "action"]);
+$router->post('/action', [MainController::class, "action"]);
 try {
     $router->dispatch(new Request());
 } catch (ErrorException $e) {
