@@ -8,6 +8,6 @@ class MainController extends Controller
 {
     public function index()
     {
-        echo "Привет из Контролера";
+        $this->render("main");
     }
 }

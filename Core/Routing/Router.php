@@ -62,7 +62,8 @@ class Router
         {
             throw new \ErrorException("Метода не сушествует");
         }
-        (new $class)->$method();
+        $params = $request->params;
+        (new $class)->$method(['id' => 1]);
     }
 
 }
