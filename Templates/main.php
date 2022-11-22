@@ -2,30 +2,27 @@
 $title = "Главная страница";
 include_once "header.php";
 ?>
-<section class="contact__from">
-    <div class="contact__wrapper">
-        <form action="addFeedback" method="post">
-            <div class="form__input">
-                <p>Name <span class="red">*</span><input name="name" type="text"></p>
-                <p>Email address <span class="red">*</span><input name="email" type="text"></p>
+<div class="wrapper">
+    <div class="form">
+        <form action="addFeedback" method="post" id="_form" class="form__body">
+            <h1 class="form__title">Оставить отзыв</h1>
+            <div class="form__item">
+                <label for="formName" class="form__label">Имя*</label>
+                <input type="text" id="formName" class="form__input _req _name" name="name">
             </div>
-            <p>Message <span class="red">*</span></p>
-            <textarea name="text"></textarea>
-            <div class="button__block">
-                <button type="submit">SEND</button>
+            <div class="form__item">
+                <label for="formEmail" class="form__label">Email*</label>
+                <input type="text" id="formEmail" class="form__input _req _email" name="email">
             </div>
+            <div class="form__item">
+                <label for="formMessage" class="form__label">Отзыв</label>
+                <textarea name="text" id="formMessage" class="form__input _req _text"></textarea>
+            </div>
+            <button type="submit" class="form__button">Отправить</button>
         </form>
     </div>
-</section>
+</div>
 
-<section class="feedback">
-    <div class="feedback__wrapper">
-        <div class="feedback__data">
-            <p>NAME</p>
-        </div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint delectus recusandae nesciunt debitis ipsa nostrum non perferendis excepturi. Hic temporibus sapiente, amet sed tempora provident tempore! Veritatis rerum dicta minus!</p>
-    </div>
-</section>
 <?php /** @var array $params */
 foreach($params['data'] as $param){ ?>
 <section class="feedback">
