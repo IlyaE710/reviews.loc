@@ -12,17 +12,17 @@ class FeedbackRepository extends Repository
 {
     function save($model)
     {
-        $sth = $this->connection->prepare("INSERT INTO review (author, text) values (:name, :text)");
+        $sth = $this->connection->prepare("INSERT INTO feedbacks (author, text, email) values (:name, :text, :email)");
         $sth->execute([
             'name' => $model->author,
-            //'email' => $model->email,
+            'email' => $model->email,
             'text' => $model->text,
         ]);
     }
 
     function getAll()
     {
-        $sth = $this->connection->prepare("SELECT * from review");
+        $sth = $this->connection->prepare("SELECT * from feedbacks");
         $sth->execute();
         $data = $sth->fetchAll();
         $models = [];
@@ -32,7 +32,7 @@ class FeedbackRepository extends Repository
             $model = new FeedbackModel();
             $model->id = $data[$i]['id'];
             $model->author = $data[$i]['author'];
-            //$model->email = $data[$i]['email'];
+            $model->email = $data[$i]['email'];
             $model->text = $data[$i]['text'];
             $models[] = $model;
         }

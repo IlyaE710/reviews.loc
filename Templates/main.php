@@ -31,6 +31,7 @@ foreach($params['models'] as $model){ ?>
             <p><?= $model->author; ?></p>
         </div>
         <p><?= $model->text; ?></p>
+        <p><?= $model->email; ?></p>
     </div>
 </section>
 <?php } ?>

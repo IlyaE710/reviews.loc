@@ -1,6 +1,6 @@
 <?php
 return [
-    "dsn" => "mysql:host=localhost;dbname=reviewDB;charset=utf8",
+    "dsn" => "mysql:host=localhost;dbname=feedbackDB;charset=utf8",
     "username" => "root",
     "password" => "root",
     "option" => [

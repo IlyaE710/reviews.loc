@@ -21,8 +21,9 @@ class MainController extends Controller
         $model = new FeedbackModel();
         if ($this->request->isPost() && $model->validate())
         {
-            $model->author = $_POST['name'];;
-            $model->text = $_POST['text'];;
+            $model->author = $_POST['name'];
+            $model->text = $_POST['text'];
+            $model->email = $_POST['email'];
             $model->save();
         }
         $this->redirect();
