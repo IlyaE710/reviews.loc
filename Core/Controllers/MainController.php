@@ -19,8 +19,7 @@ class MainController extends Controller
     public function addFeedback()
     {
         $model = new FeedbackModel();
-        $request = new Request();
-        if ($request->isPost() && $model->validate())
+        if ($this->request->isPost() && $model->validate())
         {
             $model->author = $_POST['name'];;
             $model->text = $_POST['text'];;
