@@ -7,11 +7,5 @@ use PDO;
 
 class Model
 {
-    protected PDO $connection;
 
-    public function __construct()
-    {
-        $connection = new Connection();
-        $this->connection = $connection->get();
-    }
 }

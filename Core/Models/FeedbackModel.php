@@ -4,14 +4,18 @@ namespace Core\Models;
 
 use Core\Database\Connection;
 use Core\Models\base\Model;
+use Core\Repository\FeedbackRepository;
 
 class FeedbackModel extends Model
 {
+    public int $id;
     public string $email;
     public string $author;
     public string $text;
 
-    public function save()
+
+
+/*    public function save()
     {
         $sth = $this->connection->prepare("INSERT INTO review (author, text) values (:name, :text)");
         $sth->execute([
@@ -26,6 +30,12 @@ class FeedbackModel extends Model
         $sth = $connection->prepare("SELECT * from review");
         $sth->execute();
         return $sth->fetchAll();
+    }*/
+
+    public function save()
+    {
+        $repository = new FeedbackRepository();
+        $repository->save($this);
     }
 
     //TODO Сделать валидацию

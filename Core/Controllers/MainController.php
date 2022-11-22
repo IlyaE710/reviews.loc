@@ -4,14 +4,16 @@ namespace Core\Controllers;
 
 use Core\Controllers\Base\Controller;
 use Core\Models\FeedbackModel;
+use Core\Repository\FeedbackRepository;
 use Core\Routing\Request;
 
 class MainController extends Controller
 {
     public function index()
     {
-        $data = FeedbackModel::getAll();
-        $this->render("main", ["data" => $data]);
+        $repository = new FeedbackRepository();
+        $models = $repository->getAll();
+        $this->render("main", ["models" => $models]);
     }
 
     public function addFeedback()

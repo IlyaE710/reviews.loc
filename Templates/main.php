@@ -24,13 +24,13 @@ include_once "header.php";
 </div>
 
 <?php /** @var array $params */
-foreach($params['data'] as $param){ ?>
+foreach($params['models'] as $model){ ?>
 <section class="feedback">
     <div class="feedback__wrapper">
         <div class="feedback__data">
-            <p><?= $param["author"]; ?></p>
+            <p><?= $model->author; ?></p>
         </div>
-        <p><?= $param["text"]; ?></p>
+        <p><?= $model->text; ?></p>
     </div>
 </section>
 <?php } ?>
