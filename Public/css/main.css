@@ -68,6 +68,14 @@ boody {
     width: 100%;
     font-size: 18px;
 }
+.form__input > input:valid {
+    border-color: #900;
+    background-color: #FDD;
+}
+
+.form__input > input:focus:invalid {
+    outline: none;
+}
 textarea.form__input {
     min-height: 150px;
     resize: vertical;
@@ -90,7 +98,46 @@ textarea.form__input {
     border-radius: 20px;
     box-shadow: 0 3px rgb(34, 33, 33);
 }
-._error {
-    outline: auto;
-    color: red;
+.feedback {
+    max-width: 550px;
+    margin: 0 auto;
+    color: #fff;
+}
+.feedback__body {
+}
+.feedback__row {
+    display: flex;
+}
+.feedback__name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+.feedback__email {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    padding-left: 40px;
+}
+.feedback__text {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    line-height: 140%;
+}
+/* Это стили для кастомных сообщений об ошибке */
+.error {
+    width  : 100%;
+    padding: 0;
+
+    font-size: 80%;
+    color: white;
+    background-color: #900;
+    border-radius: 0 0 5px 5px;
+
+    box-sizing: border-box;
+}
+
+.error.active {
+    padding: 0.3em;
 }

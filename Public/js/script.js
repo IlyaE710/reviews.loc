@@ -1,48 +1,57 @@
-let form = document.querySelector("#_form");
-let inputs = document.querySelectorAll("._req");
-let email = document.querySelector("._email");
-let name1 = document.querySelector("._name");
-let text = document.querySelector("._text");
+// Существуют разные способы получить DOM-узел; здесь мы определяем саму форму и
+// поле ввода email и элемент span, в который поместим сообщение об ошибке
+const form  = document.getElementById("_form");
 
-function validateEmail(email) {
-    let re = /\S+@\S+\.\S+/;
-    return re.test(String(email).toLowerCase());
-}
+const email = document.querySelector('._email');
+const error = document.querySelector('._error');
 
-function validateName(name) {
-    return String(name) !== "";
-}
+const authorName = document.querySelector('._name');
+const text = document.querySelector('._text');
 
-function validateText(text) {
-    return text.length  >= 5;
-}
 
-form.onsubmit = function () {
-    let emailValue = email.value;
-    let nameValue = name1.value;
-    let textlValue = text.value;
-    let isCorrect = false;
+email.addEventListener('input', function (event) {
+    // Каждый раз, когда пользователь что-то вводит,
+    // мы проверяем, являются ли поля формы валидными
 
-    inputs.forEach(function (input) {
-        if (input.value === '') {
-            input.classList.add("_error");
-            console.log("Пустое поле");
-        } else {
-            input.classList.remove("_error");
-        }
-    });
-    if (!validateName(nameValue)) {
-        console.log("Некорректное имя");
-        return false
+    if (email.validity.valid || authorName.validity.valid) {
+        // Если на момент валидации какое-то сообщение об ошибке уже отображается,
+        // если поле валидно, удаляем сообщение
+        error.textContent = ''; // Сбросить содержимое сообщения
+        error.className = '_error'; // Сбросить визуальное состояние сообщения
+    } else {
+        // Если поле не валидно, показываем правильную ошибку
+        showError();
     }
-    if (!validateEmail(emailValue)) {
-        console.log("Некорректный Email");
-        return false
+});
+
+form.addEventListener('submit', function (event) {
+    // Если поле email валдно, позволяем форме отправляться
+
+    if(!authorName.validity.valid || !text.validity.valid || !email.validity.valid) {
+        // Если поле email не валидно, отображаем соответствующее сообщение об ошибке
+        showError();
+        // Затем предотвращаем стандартное событие отправки формы
+        event.preventDefault();
     }
-    if (!validateText(textlValue)) {
-        console.log("Некорректный текст");
-        return false
+});
+
+function showError() {
+    if(email.validity.valueMissing) {
+        // Если поле пустое,
+        // отображаем следующее сообщение об ошибке
+        error.textContent = 'Введите Email.';
+    } else if(email.validity.typeMismatch) {
+        // Если поле содержит не email-адрес,
+        // отображаем следующее сообщение об ошибке
+        error.textContent = 'Введите Email.';
+    }
+    if(authorName.validity.valueMissing) {
+        error.textContent = "Введите имя."
+    }
+    if(text.validity.valueMissing) {
+        error.textContent = 'Введите текст отзыва.';
     }
 
-    return true;
+    // Задаём соответствующую стилизацию
+    error.className = 'error active';
 }
