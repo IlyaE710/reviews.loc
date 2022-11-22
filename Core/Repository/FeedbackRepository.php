@@ -3,20 +3,14 @@
 namespace Core\Repository;
 
 use Core\Database\Connection;
+use Core\Models\base\Model;
 use Core\Models\FeedbackModel;
+use Core\Repository\Base\Repository;
 use PDO;
 
-class FeedbackRepository
+class FeedbackRepository extends Repository
 {
-    protected PDO $connection;
-
-    public function __construct()
-    {
-        $connection = new Connection();
-        $this->connection = $connection->get();
-    }
-
-    public function save($model)
+    function save($model)
     {
         $sth = $this->connection->prepare("INSERT INTO review (author, text) values (:name, :text)");
         $sth->execute([
@@ -26,7 +20,7 @@ class FeedbackRepository
         ]);
     }
 
-    public function getAll()
+    function getAll()
     {
         $sth = $this->connection->prepare("SELECT * from review");
         $sth->execute();
